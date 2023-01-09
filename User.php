@@ -2,37 +2,55 @@
 
     try
     {
-         $bdd = new mysqli('localhost', 'root', '', 'classes');
+        $bdd = new mysqli('localhost', 'root', '', 'classes');
     }catch(Exception $e)
     {
-        die('Erreur : '.$e->getMessage());
+        die ('Erreur : '.$e->getMessage());
     }
-    
 ?>
 
-<form action="User.php" method="post">
-    <label for="login">Pseudo</label>
-    <input type="text" name="login" id="login">
-    <label for="password">Mot de passe</label>
-    <input type="password" name="password" id="password">
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email">
-    <label for="name">Nom</label>
-    <input type="text" name="name" id="name">
-    <label for="prenom">Prénom</label>
-    <input type="text" name="prenom" id="prenom">
-    <input type="submit" value="Inscription">
-</form>
-
-
 <?php
+    class User
+    {
 
-   
+        private $id;
+        public $login;
+        private $password;
+        public $email;
+        public $firstname;
+        public $lastname;
 
-    $req = mysqli_prepare($bdd, "INSERT INTO utilisateurs (login, password, email, firstname, lastname) VALUES (?, ?, ?, ?, ?)");
+        public function __construct()
+        {
+            $this->id;
+            $this->login;
+            $this->password;
+            $this->email;
+            $this->firstname;
+            $this->lastname;
+        }
 
+    }
 
+    // VISUALISATION DES USERS DANS UN TEABLEAU
 
-    
-    
+    // $req = ("SELECT * FROM utilisateurs");
+    // $res = $bdd->query($req);
+
+    // echo "<table>";
+    // while($data = mysqli_fetch_array($res)){
+    //     echo "<tr><td>".$data['login']."</td><td>".$data['email']."</td></tr>";
+    // }
+    // echo "</table>";
+
+    // INSERTION USER BDD 
+
+    // $req = "INSERT INTO utilisateurs (login, password, email, firstname, lastname) VALUES ('test5', 'test', 'test5@gmail.com', 'test5', 'test5')";
+    // $res = $bdd->query($req);
+
+    // DELETE USER BDD
+
+    // $req = "DELETE FROM utilisateurs WHERE id = 5";
+    // $res = $bdd->query($req);
+
 ?>
