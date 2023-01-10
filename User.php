@@ -60,63 +60,36 @@
             return $this->lastname;
         }
 
+        function register($login, $password, $email, $firstname, $lastname){
+            global $bdd;
+
+            $req = "INSERT INTO utilisateurs (login, password, email, firstname, lastname)VALUES ('$login', '$password', '$email', '$firstname', '$lastname')";
+            mysqli_query($bdd, $req);
+        }
+
+        function update($login, $password, $email, $firstname, $lastname){
+            global $bdd;
+
+            $req = "UPDATE utilisateurs SET login = '$login', password = '$password', email = '$email', firstname = '$firstname', lastname = '$lastname'";
+            $bdd->query($req);
+        }
+
+        function delete($id){
+            global $bdd;
+
+            $req = "DELETE FROM utilisateurs WHERE id = '$id'";
+            $bdd->query($req);
+        }
+
+        
+
     }
 
-?>
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="index.php" method="post">
-        
-        <label for="login">Pseudo : </label>
-        <input type="text" name="login">
-
-        <label for="password">Mot de passe : </label>
-        <input type="password" name="password">
-
-        <label for="email">Email : </label>
-        <input type="email" name="email">
-
-        <label for="firstname">Nom : </label>
-        <input type="text" name="firstname">
-
-        <label for="lastname">Prénom : </label>
-        <input type="text" name="lastname">
-
-        <input type="submit" value="Inscrription">
-
-    </form>
-</body>
-</html> -->
-
-<?php
-
-// if($_POST){
-//     if($_POST['login'] != ''){
-        
-//         $req = $bdd->prepare("INSERT INTO utilisateurs (login, password, email, firstname, lastname) VALUES (?, ?, ?, ?, ?)");
-
-//         $login = $_POST['login'];
-//         $password = $_POST['password'];
-//         $email = $_POST['email'];
-//         $firstname = $_POST['firstname'];
-//         $lastname = $_POST['lastname'];
-        
-//         $req->bind_param("sssss", $login, $password, $email, $firstname, $lastname);
-//         $req->execute();
-
-//     }
-// }
-
-    
-
+    $user = new User('', '', '', '', '');
+    // $user->register('test3', 'test3', 'test3@gmail.com', 'test3', 'test3');
+    // $user->update('test', 'test', 'test3@gmail.com', 'test', 'test');
+    // $user->delete(8);
+    // echo $user->getLogin();
     
     
 
